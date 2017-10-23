@@ -283,7 +283,7 @@
 
       this.debounce('_generateFilteredArray' + this.localName, function() {
         var filterLc = ('' + (this.filter || '')).toLowerCase().trim();
-        if (typeof this.arrayToFilter === 'undefined' || this.arrayToFilter.length === 0) {
+        if (typeof this.arrayToFilter === 'undefined' || this.arrayToFilter === null||  this.arrayToFilter.length === 0) {
           this._setFilteredArray([]);
         } else if (filterLc.length < (filterMinLength || 2)) {
           // filter is not long enough, we appaly no filtering
@@ -361,7 +361,8 @@
         if (!(filterMaxDepth > -1)) {
           throw 'filterMaxDepth (' + filterMaxDepth + ') must be a valid number >= 0';
         }
-        if (typeof arrayToFilter === 'undefined' || arrayToFilter.length === 0) {
+
+        if (typeof arrayToFilter === 'undefined' || arrayToFilter === null || arrayToFilter.length === 0) {
            // The array to filter is empty or undefined, nothing to pre-process
           this._set_processedArray([]);
         } else {
